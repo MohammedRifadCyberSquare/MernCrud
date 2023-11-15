@@ -1,0 +1,39 @@
+
+<%- include('include/_header') %>
+
+<div class="container">
+    <div class="box-nav d-flex justify-between" style="margin-top: 30px;">
+        <div class="filter">
+            <a href="/"><i class="fas fa-plus"></i> Add User</a>
+        </div>
+     </div>
+<table class="table table-primary table-hover " style="margin-top: 20px;">
+    <tr>
+        <th>SlNo</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Gender</th>
+        <th>Status</th>
+
+    </tr>
+<% for(var i = 0; i < usersList.length; i++) { %>
+<tr>
+    <td><%= i + 1 %></td>
+    <td><%= usersList[i].name %></td>
+    <td><%= usersList[i].email %></td>
+    <td><%= usersList[i].gender %></td>
+    <td><%= usersList[i].status %></td>
+    <td>
+        <a href="/user?id=<%= usersList[i]._id %>" class="btn border-shadow update">
+            <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
+        </a>
+        <a class="btn border-shadow delete" href="/user/remove/<%= usersList[i]._id %>">
+            <span class="text-gradient"><i class="fas fa-times"></i></span>
+        </a>
+    </td>
+</tr>
+<% } %>
+</table>
+
+</div>
+<%- include('include/_footer') %>
